@@ -2,8 +2,10 @@ import warnings
 warnings.filterwarnings(action='ignore')
 
 import numpy as np
-from sklearn.linear_model import LogisticRegression
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LogisticRegression, LinearRegression
 from sklearn.model_selection import train_test_split
+from scipy.special import expit
 
 # plot을 그려주는 함수입니다.
 def plot_logistic_regression(model, X_data, y_data):
@@ -16,7 +18,7 @@ def plot_logistic_regression(model, X_data, y_data):
     loss = expit(X_test * model.coef_ + model.intercept_).ravel()
     plt.plot(X_test, loss, color='red', linewidth=3)
 
-    ols = linear_model.LinearRegression()
+    ols = LinearRegression()
     ols.fit(X_data, y_data)
     plt.plot(X_test, ols.coef_ * X_test + ols.intercept_, linewidth=1)
     plt.axhline(.5, color='.5')
@@ -31,7 +33,7 @@ def plot_logistic_regression(model, X_data, y_data):
                loc="lower right", fontsize='small')
     plt.tight_layout()
     plt.show()
-    plt.savefig('log_image.png')
+    plt.savefig('q1_log_image.png')
 
 # 데이터를 생성하고 반환하는 함수입니다.
 def load_data():
@@ -39,7 +41,7 @@ def load_data():
     np.random.seed(0)
     
     X = np.random.normal(size = 100)
-    y = (X > 0).astype(np.float)
+    y = (X > 0).astype(np.float64)
     X[X > 0] *= 5
     X += .7 * np.random.normal(size = 100)
     X = X[:, np.newaxis]
@@ -53,13 +55,13 @@ def load_data():
 """
 def main():
     
-    train_X, test_X, train_y, test_y = None
+    train_X, test_X, train_y, test_y = load_data()
     
-    logistic_model = None
+    logistic_model = LogisticRegression()
     
-    None
+    logistic_model.fit(train_X, train_y)
     
-    predicted = None
+    predicted = logistic_model.predict(test_X)
     
     # 예측 결과 확인하기 
     print("예측 결과 :", predicted[:10])

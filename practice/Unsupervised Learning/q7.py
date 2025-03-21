@@ -68,20 +68,26 @@ def plot_confusion_matrix(cm, y_true, y_pred, classes, normalize=False, cmap=plt
 """
 def main():
     
-    train_X, test_X, train_y, test_y, class_names = None
+    train_X, test_X, train_y, test_y, class_names = load_data()
     
     # SVM 모델로 분류기를 생성하고 학습합니다.
     classifier = SVC()
     y_pred = classifier.fit(train_X, train_y).predict(test_X)
     
-    cm = None
+    cm = confusion_matrix(test_y, y_pred)
     
-    plot_confusion_matrix(None, None, None, classes=None)
+    plot_confusion_matrix(cm, test_y, y_pred, classes=class_names)
     
     # 정규화 된 혼동 행렬을 시각화합니다.
-    plot_confusion_matrix(None, None, None, classes=None, normalize = None)
+    plot_confusion_matrix(cm, test_y, y_pred, classes=class_names, normalize = True)
     
     return cm
     
 if __name__ == "__main__":
     main()
+
+
+#정규화된 Confusion Matrix(Recall재현율)
+#행- 실제 class(0,1,2) / 열= 예측 class(0,1,2)
+# 전체적으로 Class_0, Class_1은 잘 예측됨. (정확도 89.47%, 90.91%)
+# Class_2 예측이 어렵다. → 53.85%를 Class_1로 착각해서 잘못 예측
