@@ -87,6 +87,7 @@ def main():
     
     # 전체 성능 점수의 평균 점수 출력
     print("\n> 평균 검증 모델 점수 : ", np.mean(model_scores))
+    print("\n> test 모델 점수 ", model.score(test_X, test_y))
     
 
     

@@ -59,8 +59,8 @@ def main():
     
     print("\n> 모델 평가 점수 :", model_score)
      
-    beta_0 = multilinear.intercept_
-    beta_i_list = multilinear.coef_
+    beta_0 = multilinear.intercept_   #절편
+    beta_i_list = multilinear.coef_   #기울기
     
     print("\n> beta_0 : ",beta_0)
     print("> beta_i_list : ",beta_i_list)

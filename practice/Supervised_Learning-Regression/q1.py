@@ -47,7 +47,7 @@ def gradient_descent(X, y, iters, lr):
     for i in range(iters):
         
         y_pred = prediction(beta_0, beta_1, X)
-        loss = np.mean(np.square(y - y_pred))
+        loss = np.mean(np.square(y - y_pred))  #(실제값-예측값)의 제곱의 평균
         
         beta0_delta, beta1_delta = update_beta(X, y, y_pred, lr)
         
@@ -79,7 +79,7 @@ def plotting_graph(X,y,beta_0,beta_1):
 def main():
     
     # 학습을 위해 필요한 파라미터입니다. 
-    lr = 1e-4
+    lr = 1e-4  #학습률
     iteration = 1000
     
     X, y = load_data()
