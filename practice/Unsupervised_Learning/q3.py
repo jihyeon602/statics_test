@@ -15,8 +15,9 @@ from sklearn.datasets import make_blobs
 """
 # make_blobs()으로 데이터를 생성해보세요.
 '''
-# 클러스터링 알고리즘을 실험하기 위한 가상 데이터셋을 생성
-# n_sample: 데이터 포인트 개수, n_features: 차원, center: 군집(클러스터) 중심점 생성, cluster_std: 각 클러스터의 표준편차(작을수록 밀집)
+- 클러스터링 알고리즘을 실험하기 위한 가상 데이터셋을 생성
+- n_sample: 데이터 포인트 개수, n_features: 차원, center: 군집(클러스터) 중심점 생성, cluster_std: 각 클러스터의 표준편차(작을수록 밀집)
+- X: (300, 2) 형태의 데이터 값들
 '''
 X, y = make_blobs(n_samples=300, n_features=2, centers=3, cluster_std=0.8, random_state=0)
 
