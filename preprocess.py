@@ -3,7 +3,7 @@ import csv
 
 def load_data():
     
-    f = open('./data/iris.csv', 'r', encoding='utf-8')
+    f = open('practice/Unsupervised_Learning/q7/data/iris.csv', 'r', encoding='utf-8')
     raw_data = csv.reader(f)
     
     # 붓꽃 데이터를 한 줄씩 읽어와 float 형으로 빈 리스트 sepal_length, sepal_width, petal_length, petal_width에 저장합니다.
